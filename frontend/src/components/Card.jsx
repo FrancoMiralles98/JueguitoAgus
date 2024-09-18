@@ -69,7 +69,7 @@ export const Card = ({isGuia,ganadorLength,reset,aumentarPuntos,color,restarPunt
             <>
                 <section className={background}>
                     <div className="card-i">
-                        <button className="card-i-b" onClick={change}><i className="material-icons card-i-b-t">autorenew</i></button>    
+                        <button className="card-i-b"><i className="material-icons card-i-b-t">i</i></button>    
                     </div>
                     <div className="card-t" onClick={pintar}>
                     <h5>{selectPalabra}</h5>

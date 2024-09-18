@@ -46,8 +46,12 @@ export const TableroProvider = ({children})=>{
 
     }
 
+    const catchWord = ()=>{
+        const words = JSON.parse(window.localStorage.getItem('words'))
+        setWords(words)
+    }
+
     const resetWords = async()=>{
-        
     // const newWords = await wordRequest()
         const newWords = Array(25).fill().map((_,i)=> i+1)
         setWords(newWords)
@@ -67,11 +71,10 @@ export const TableroProvider = ({children})=>{
         setReset(i => i+1)
     }
 
-
-
 return (
     <TableroContext.Provider value={{
         tablero
+        ,catchWord
         ,words
         ,resetWords
         ,resetWords

@@ -19,6 +19,7 @@ export const MainPage = () => {
         winner} = usePlayerContext()
 
     const {tablero
+        ,catchWord
         ,words
         ,resetWords
         ,changeOneWord
@@ -40,6 +41,7 @@ export const MainPage = () => {
         createTablero()
         resetAll()
     }
+
 
 
     useEffect(() => {

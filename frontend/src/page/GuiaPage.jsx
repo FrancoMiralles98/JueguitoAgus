@@ -33,9 +33,11 @@ export const GuiaPage = () =>{
         await resetWords()
         resetPuntos()
         resetTurno()
+        createTablero()
         winner('')
         resetAll()
     }
+
 
 
     useEffect(() => {
@@ -81,9 +83,8 @@ export const GuiaPage = () =>{
                         <h4>{ganador.length > 0?
                             ganador
                         : 
-                        `Ahora es el turno del equipo ${turno.toUpperCase()}`}
+                        ``}
                         </h4>
-                        <button onClick={changeTurno}>Siguiente Turno</button>
                         <button onClick={reiniciar}>Reiniciar</button>
                     </div>
                        
