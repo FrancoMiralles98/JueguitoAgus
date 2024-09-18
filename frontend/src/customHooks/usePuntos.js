@@ -29,8 +29,6 @@ export const usePuntos = () => {
         return
     }
 
-
-
     const aumentarPuntos = (turno,puntos) => {
         if (turno === 'azul') {
             setPuntos(p => {

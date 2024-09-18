@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import { Card } from "../components/Card.jsx"
-import { Modal } from "../components/Modal.jsx"
-import { usePlayerContext } from "../context/PlayerContext.jsx"
 import { useTableroContext } from "../context/TableroContext.jsx"
+import { usePlayerContext } from "../context/PlayerContext.jsx"
 
 
-export const MainPage = () => {
+export const GuiaPage = () =>{
 
-    const isGuia = false
+    const isGuia = true
+
     const {puntos,
         resetPuntos,
         restarPuntos,
@@ -26,18 +26,14 @@ export const MainPage = () => {
         ,reset
         ,resetAll} = useTableroContext()
 
-    const [isOpen,setIsOpen] = useState(false)
     const [loading,setLoading] = useState(true)
-    const openModal = () => setIsOpen(true);
-    const closeModal = () => setIsOpen(false);
+    
     
     const reiniciar = async()=>{
         await resetWords()
-        closeModal()
         resetPuntos()
         resetTurno()
         winner('')
-        createTablero()
         resetAll()
     }
 
@@ -58,12 +54,10 @@ export const MainPage = () => {
     useEffect(()=>{ 
         if(puntos.A >= 8){
             winner('GANO EL EQUIPO AZUUUL')
-            openModal()
             return
         }
         if(puntos.R >= 8){
             winner('GANO EL EQUIPO ROOOJOO')
-            openModal()
             return
         }
     },[puntos])
@@ -75,7 +69,7 @@ export const MainPage = () => {
             </>
         )
     }
-    
+
     return (
         <>
             <main>
@@ -96,9 +90,9 @@ export const MainPage = () => {
                 </header>
                 <section className="main-body">
                     {
-                       words.map((e, i) => (
+                        words.map((e, i) => (
                             <Card palabra={e}
-                            isGuia={isGuia}
+                            isGuia ={isGuia}
                             ganadorLength={ganador}
                             color={tablero[i]} 
                             key={i}
@@ -114,17 +108,8 @@ export const MainPage = () => {
                         ))
                     }
                 </section>
-
-                {isOpen && (
-        <Modal closeModal={closeModal}>
-          <h2>{ganador}</h2>
-          <div className="button-modal">
-          <button onClick={closeModal}>Cerrar</button>
-          <button onClick={reiniciar}>Reiniciar</button>
-          </div>
-        </Modal>
-      )}
             </main>
         </>
     )
+
 }
