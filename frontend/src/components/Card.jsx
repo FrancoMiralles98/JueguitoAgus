@@ -12,11 +12,19 @@ export const Card = ({isGuia,ganadorLength,reset,aumentarPuntos,color,restarPunt
         if(isGuia === false){
         setBackground('card')
         setSelectPalabra('')}
+        if(isGuia === true){
+            const colorSaved = JSON.parse(window.localStorage.getItem('tablero'))[index]
+            setBackground(`card ${colorSaved}`)
+        }
     },[reset])
 
+
     const pintar = async()=>{
+        const colorSaved = JSON.parse(window.localStorage.getItem('tablero'))[index]
+        const wordSaved = JSON.parse(window.localStorage.getItem('words'))[index]
+        
         if(ganadorLength.length > 0) return
-        if(background.length > 4 && color !== 'W'){
+        if(background.length > 4 && colorSaved !== 'W'){
             const newTurno = turno === 'azul' ? 'rojo' : 'azul'
             changeTurno()
             setSelectPalabra('')
@@ -24,36 +32,36 @@ export const Card = ({isGuia,ganadorLength,reset,aumentarPuntos,color,restarPunt
             restarPuntos(newTurno)  
             return
         }
-        if(background.length > 4 && color === 'W'){
+        if(background.length > 4 && colorSaved === 'W'){
             changeTurno()
-            setSelectPalabra(palabra)
+            setSelectPalabra(wordSaved)
             setBackground('card')  
             return
         }
 
-        if(color === 'R'){
+        if(colorSaved === 'R'){
             aumentarPuntos('rojo',1)
             setBackground('card R')
-            setSelectPalabra(palabra)
+            setSelectPalabra(wordSaved)
             changeTurno()
             return
         }
-        if(color === 'A'){
+        if(colorSaved === 'A'){
             aumentarPuntos('azul',1)
             setBackground('card A')
-            setSelectPalabra(palabra)
+            setSelectPalabra(wordSaved)
             changeTurno()
             return
         }
-        if(color === 'W'){
+        if(colorSaved === 'W'){
             setBackground('card W')
-            setSelectPalabra(palabra)
+            setSelectPalabra(wordSaved)
             changeTurno()
             return
         }
         setBackground('card Z')
         const ganador = turno === 'azul'? 'rojo' : 'azul'
-        setSelectPalabra(palabra)
+        setSelectPalabra(wordSaved)
         aumentarPuntos(ganador,8)
         return
         

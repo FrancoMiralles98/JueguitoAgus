@@ -3,6 +3,7 @@ import { Card } from "../components/Card.jsx"
 import { Modal } from "../components/Modal.jsx"
 import { usePlayerContext } from "../context/PlayerContext.jsx"
 import { useTableroContext } from "../context/TableroContext.jsx"
+import {Link} from 'react-router-dom'
 
 
 export const MainPage = () => {
@@ -93,6 +94,7 @@ export const MainPage = () => {
                         </h4>
                         <button onClick={changeTurno}>Siguiente Turno</button>
                         <button onClick={reiniciar}>Reiniciar</button>
+                        <Link to='/guia' target="_blank"><button>Guia</button></Link>
                     </div>
                        
                 </header>

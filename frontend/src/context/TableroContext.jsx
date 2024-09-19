@@ -40,8 +40,6 @@ export const TableroProvider = ({children})=>{
                 let randomNumberNegro = Math.floor(Math.random() * validos.length)
                     total[validos[randomNumberNegro]] = 'Z'          
             }
-            
-            window.localStorage.setItem('tablero',JSON.stringify(total))
             setTablero(total)
 
     }
@@ -55,7 +53,6 @@ export const TableroProvider = ({children})=>{
     // const newWords = await wordRequest()
         const newWords = Array(25).fill().map((_,i)=> i+1)
         setWords(newWords)
-        window.localStorage.setItem('words',JSON.stringify(newWords))
     }
 
     const changeOneWord = async(i)=>{
@@ -64,13 +61,20 @@ export const TableroProvider = ({children})=>{
         const newArray = words.map(e=> e)
         newArray.splice(i,1,word)  
         setWords(newArray)
-        window.localStorage.setItem('words',JSON.stringify(newArray))  
     }
 
     const resetAll = ()=>{
         setReset(i => i+1)
     }
 
+    useEffect(()=>{
+        window.localStorage.setItem('tablero',JSON.stringify(tablero))
+    },[tablero])
+
+    useEffect(()=>{
+        window.localStorage.setItem('words',JSON.stringify(words))
+    },[words])
+    
 return (
     <TableroContext.Provider value={{
         tablero

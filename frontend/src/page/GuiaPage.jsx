@@ -30,12 +30,12 @@ export const GuiaPage = () =>{
     
     
     const reiniciar = async()=>{
-        await resetWords()
-        resetPuntos()
-        resetTurno()
-        createTablero()
-        winner('')
-        resetAll()
+        await resetWords();    
+        await createTablero(); 
+        resetPuntos();         
+        resetTurno();          
+        winner('');            
+        resetAll();                  
     }
 
 
