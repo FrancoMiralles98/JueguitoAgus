@@ -80,7 +80,7 @@ export const Card = ({isGuia,ganadorLength,reset,aumentarPuntos,color,restarPunt
                         <button className="card-i-b"><i className="material-icons card-i-b-t">i</i></button>    
                     </div>
                     <div className="card-t" onClick={pintar}>
-                    <h5>{selectPalabra}</h5>
+                    <h5>{palabra}</h5>
                     </div>
                 </section>
             </>
