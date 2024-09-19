@@ -1,6 +1,6 @@
 export const wordRequest = async()=>{
     try {
-        const peticion = await fetch('https://random-word-api.herokuapp.com/word?lang=es&number=25&length=6',{
+        const peticion = await fetch('https://random-word-api.herokuapp.com/word?lang=es&number=25&length=7',{
             method:'GET'
         })
         const word = await peticion.json()
@@ -13,7 +13,7 @@ export const wordRequest = async()=>{
 
 export const oneWordRequest = async()=>{
     try {
-        const peticion = await fetch('https://random-word-api.herokuapp.com/word?lang=es&number=1&length=6',{
+        const peticion = await fetch('https://random-word-api.herokuapp.com/word?lang=es&number=1&length=7',{
             method:'GET'
         })
         const word = await peticion.json()

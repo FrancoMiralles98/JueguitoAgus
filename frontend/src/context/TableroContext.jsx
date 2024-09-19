@@ -50,14 +50,12 @@ export const TableroProvider = ({children})=>{
     }
 
     const resetWords = async()=>{
-    // const newWords = await wordRequest()
-        const newWords = Array(25).fill().map((_,i)=> i+1)
+    const newWords = await wordRequest()
         setWords(newWords)
     }
 
     const changeOneWord = async(i)=>{
-         // const word = await oneWordRequest() 
-        const word = 'hola'
+        const word = await oneWordRequest() 
         const newArray = words.map(e=> e)
         newArray.splice(i,1,word)  
         setWords(newArray)
